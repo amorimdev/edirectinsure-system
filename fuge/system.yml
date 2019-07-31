@@ -1,0 +1,51 @@
+fuge_global:
+  tail: true
+  monitor: true
+  auto_generate_environment: false
+  monitor_excludes:
+    - '**/node_modules/**'
+    - '**/.git/**'
+    - '**/*.log'
+  env_file: ./env/system.env
+  environment:
+    - SILENT=true
+
+auth:
+  type: process
+  build: 'npm install'
+  run: 'npm run start-dev'
+  path: ../../edirectinsure-services/auth/
+  container_name: auth
+  repository_url: https://github.com/amorimdev/edirectinsure-auth
+
+user:
+  type: process
+  build: 'npm install'
+  run: 'npm run start-dev'
+  path: ../../edirectinsure-services/user/
+  container_name: user
+  repository_url: https://github.com/amorimdev/edirectinsure-user
+
+project:
+  type: process
+  build: 'npm install'
+  run: 'npm run start-dev'
+  path: ../../edirectinsure-services/project/
+  container_name: project
+  repository_url: https://github.com/amorimdev/edirectinsure-project
+
+task:
+  type: process
+  build: 'npm install'
+  run: 'npm run start-dev'
+  path: ../../edirectinsure-services/task/
+  container_name: task
+  repository_url: https://github.com/amorimdev/edirectinsure-task
+
+webapi:
+  type: process
+  build: 'npm install'
+  run: 'npm run start-dev'
+  path: ../../edirectinsure-services/webapi/
+  container_name: webapi
+  repository_url: https://github.com/amorimdev/edirectinsure-webapi

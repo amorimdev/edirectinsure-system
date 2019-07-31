@@ -1,0 +1,44 @@
+{
+  "name": "edirectinsure-system",
+  "version": "1.0.0",
+  "description": "EDirectInsure System",
+  "main": "run",
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "scripts": {
+    "services:download": "make",
+    "services:install": "make install",
+    "services:reinstall": "make reinstall",
+    "infra:up": "docker-compose -p edirectinsure -f fuge/infrastructure.yml up -d",
+    "infra:down": "docker-compose -p edirectinsure -f fuge/infrastructure.yml down -v --remove-orphans",
+    "setup": "npm run infra:down && npm run infra:up",
+    "start:services": "docker-compose -p edirectinsure -f fuge/infrastructure.yml restart",
+    "start:fuge": "node_modules/.bin/fuge shell fuge/system.yml",
+    "start": "npm run start:services && npm run start:fuge",
+    "clean:docker:data": "docker volume prune -f && docker system prune -f"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/amorimdev/edirectinsure-system.git"
+  },
+  "keywords": [
+    "matchinair",
+    "system"
+  ],
+  "author": "Jhonatan Amorim <amorim.dev@gmail.com>",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/amorimdev/edirectinsure-system#readme",
+  "dependencies": {
+    "fuge": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-mocha": "^5.2.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}

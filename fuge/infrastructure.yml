@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:4.0.3
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/data/db
+
+  mongo-seed:
+    image: mongo:4.0.3
+    environment:
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
+    command:
+      'mongorestore --uri "mongodb://"mongo /data'
+    volumes:
+      - ./mongo-seed:/data
+    depends_on:
+      - mongo
+
+  redis:
+    image: smebberson/alpine-redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis:/data
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    ports:
+      - 8081:8081
+    environment:
+      REDIS_HOSTS: redis
+    depends_on:
+      - redis
