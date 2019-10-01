@@ -58,6 +58,12 @@ $ npm run setup
 $ npm start
 ```
 
+- Inside Fuge process:
+
+```bash
+$ start all
+```
+
 ## Available Graphical Resources
 
 - [Swagger Documentation](http://localhost:3000/documentation)
