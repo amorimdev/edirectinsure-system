@@ -11,7 +11,7 @@ TEST_COMMAND=npm test
 SERVICES=$(foreach package, $(PACKAGES), ../$(PREFIX)-services/$(package))
 
 $(SERVICES):
-	-git clone -b $(DEFAULT_BRANCH) git@github.com:$(NAMESPACE)/$(PREFIX)-$(@F).git $@;
+	-git clone -b $(DEFAULT_BRANCH) https://github.com/$(NAMESPACE)/$(PREFIX)-$(@F).git $@;
 
 .DEFAULT_GOAL := all
 
