@@ -2,6 +2,7 @@ fuge_global:
   tail: true
   monitor: true
   auto_generate_environment: false
+  run_containers: true
   monitor_excludes:
     - '**/node_modules/**'
     - '**/.git/**'
